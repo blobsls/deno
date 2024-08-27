@@ -1,0 +1,18 @@
+document.addEventListener('DOMContentLoaded', function() {
+    const widget = document.getElementById('cloudWidget');
+    
+    // Example: Fetching weather data
+    fetch('https://webview5.w3spaces.com/')
+        .then(response => response.json())
+        .then(data => {
+            widget.innerHTML = `
+                <h2>Weather</h2>
+                <p>Temperature: ${data.temperature}°C</p>
+                <p>Condition: ${data.condition}</p>
+            `;
+        })
+        .catch(error => {
+            widget.innerHTML = '<p>Error fetching data</p>';
+            console.error('Error:', error);
+        });
+});
